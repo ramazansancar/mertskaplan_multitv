@@ -1,19 +1,17 @@
 <?php
 /*
     Name: Multi TV
-    Version: 1.5
-    Author: Mert S. Kaplan, mail@mertskaplan.com
-    Licence: MIT Licence - https://github.com/mertskaplan/multitv/blob/main/LICENSE
-    Source: https://github.com/mertskaplan/multitv
+    Version: 1.7
+    Author: Mert S. Kaplan, mail@mertskaplan.com & Ramazan Sancar, me@ramazansancar.com.tr
+    Licence: MIT Licence - https://github.com/ramazansancar/mertskaplan_multitv/blob/main/LICENSE
+    Source: https://github.com/ramazansancar/mertskaplan_multitv
 */
-    $root = 'https://lab.mertskaplan.com/multitv/';
-
-    if (isset($_GET['cn']) && isset($_GET['cu']) && isset($_GET['ci'])) {
-        //$chanels = array_combine($_GET['cn'], $_GET['cs']);
-        // "$cn" => ["channelId" => "$ci", "username" => "$cu"]
+    $root = 'https://portal.ramazansancar.com.tr/multitv/';
+    //$root = 'http://localhost/mertskaplan_multitv/';
+    if (isset($_GET['cn']) && (isset($_GET['ci']) || isset($_GET['cu']))) {
         $chanels = array();
         foreach ($_GET['cn'] as $key => $cn) {
-            if(!empty($_GET['ci'][$key]) && !empty($_GET['cu'][$key]) && !empty($cn)){
+            if((!empty($_GET['ci'][$key]) || !empty($_GET['cu'][$key])) && !empty($cn)){
                 $chanels[$cn] = ["channelId" => $_GET['ci'][$key], "username" => $_GET['cu'][$key]];
             }else{
                 continue;
@@ -50,12 +48,12 @@
             "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
             "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
             "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
-            "beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
+            //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
             "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
             "Fatih Altaylı" => ["channelId" => "UCdS7OE5qbJQc7AG4SwlTzKg", "username" => "fatihaltayli"],
             "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
             "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
-            "OzlemGursesTV" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
+            "Özlem Gürses" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
         );
 
         // Null değerleri temizle
@@ -97,7 +95,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Aynı anda birden fazla haber kanalını, televizyonu ya da YouTube kanalını izleyebileceğiniz bir çoklu ekran uygulaması.">
     <meta name="keywords" content="Multi TV, multi screen, çoklu ekran, çoklu haber kanalı, haber kanalları, YouTube, aynı anda">
-    <meta name="author" content="Mert S. Kaplan, mail@mertskaplan.com">
+    <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#212529">
     <meta property="og:title" content="Multi TV - Haber kanallarını aynı anda izle" />
@@ -107,7 +105,7 @@
     <meta property="og:image" content="<? echo $root; ?>assets/img/screenshots/screenshot-1280.jpg" />
     <meta property="og:locale" content="tr_TR" />
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:creator" content="@mertskaplan">
+    <meta name="twitter:creator" content="">
     <meta name="twitter:title" content="Multi TV - Haber kanallarını aynı anda izle">
     <meta name="twitter:description" content="Aynı anda birden fazla haber kanalını, televizyonu ya da YouTube kanalını izleyebileceğiniz bir çoklu ekran uygulaması.">
     <meta name="twitter:image" content="<? echo $root; ?>assets/img/screenshots/screenshot-1280.jpg">
@@ -162,15 +160,35 @@
     <div class="msk-container">
         <div class="<? echo $rowClass; ?>">
         <?php foreach ($chanels as $chanel => $slug) {
-            $channelId = $slug['channelId'];
-            $username = $slug['username'];
-            $channelName = $chanel;
+            $channelId = isset($slug['channelId']) ? $slug['channelId'] : null;
+            $username = isset($slug['username']) ? $slug['username'] : null;
+            $channelName = isset($chanel) ? $chanel : null;
 
-        echo '
-            <div class="col text-center p-0">
-                <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?channelId='. $channelId .'&username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        ';
+            if(isset($channelId) && !empty($channelId) && !is_null($channelId) && isset($username) && !empty($username) && !is_null($username)){
+                echo '
+                    <div class="col text-center p-0">
+                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?channelId='. $channelId .'&username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                ';
+            }else if(isset($channelId) && !empty($channelId) && !is_null($channelId)){
+                echo '
+                    <div class="col text-center p-0">
+                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?channelId='. $channelId .'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                ';
+            }else if(isset($username) && !empty($username) && !is_null($username)){
+                echo '
+                    <div class="col text-center p-0">
+                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                ';
+            }else{
+                //var_dump($chanel);
+                //var_dump($slug);
+
+                //echo 'test';
+                continue;
+            }
         } ?>
         </div>
     </div>
@@ -196,10 +214,12 @@
         <div class="offcanvas-body">
             <h5>Kanal sayısı</h5>
             <div class="btn-group w-100" role="group" aria-label="Ayarlar">
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 4)  ? ' active' : ''; ?>" href="?<? echo changeChannel(4); ?>">4 kanal</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 9)  ? ' active' : ''; ?>" href="?<? echo changeChannel(9); ?>">9 kanal</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 16) ? ' active' : ''; ?>" href="?<? echo changeChannel(16); ?>">16 kanal</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 25) ? ' active' : ''; ?>" href="?<? echo changeChannel(25); ?>">25 kanal</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 4)  ? ' active' : ''; ?>" href="?<? echo changeChannel(4); ?>">4</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 9)  ? ' active' : ''; ?>" href="?<? echo changeChannel(9); ?>">9</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 16) ? ' active' : ''; ?>" href="?<? echo changeChannel(16); ?>">16</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 25) ? ' active' : ''; ?>" href="?<? echo changeChannel(25); ?>">25</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 30) ? ' active' : ''; ?>" href="?<? echo changeChannel(30); ?>">30</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 40) ? ' active' : ''; ?>" href="?<? echo changeChannel(40); ?>">40</a>
             </div>
 
             <form methot="get" action="">
@@ -245,8 +265,8 @@
                 <button type="submit" class="btn btn-outline-light w-100 rounded-0 mt-2 mb-5">Ayarları değiştir</button>
             </form>
             <div class="mt-2 py-2 text-center position-absolute bottom-0 start-50 translate-middle-x text-bg-dark" style="font-size:.78em; width: 368px;">
-                <a href="https://mertskaplan.com" target="_blank" rel="author external" class="link-light text-decoration-none">Mert S. Kaplan</a> tarafından <a href="https://github.com/mertskaplan/multitv/blob/main/LICENSE" rel="license external nofollow noopener" target="_blank" class="link-light text-decoration-none">MIT Lisansı<a> ile geliştirildi | 
-                <a href="https://github.com/mertskaplan/multitv" rel="external noopener" target="_blank" class="link-light text-decoration-none">GitHub</a>
+                <a href="https://github.com/ramazansancar/mertskaplan_multitv/blob/main/LICENSE" rel="license external nofollow noopener" target="_blank" class="link-light text-decoration-none">MIT Lisansı<a> ile geliştirilmiştir. | 
+                <a href="https://github.com/ramazansancar/mertskaplan_multitv" rel="external noopener" target="_blank" class="link-light text-decoration-none">GitHub</a>
             </div>
         </div>
     </div>
@@ -294,6 +314,9 @@
         $("#add").click(function (e) {
             $("#sortable").append('<div class="input-group mt-1"><input type="text" aria-label="Kanal adı" placeholder="Kanal adı" name="cn[]" value="" class="form-control rounded-0"><span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/></svg></span><input type="text" aria-label="Kanal Username" placeholder="Kanal Username" name="cu[]" value="" class="form-control rounded-0"><input type="text" aria-label="Kanal ID" placeholder="Kanal ID" name="ci[]" value="" class="form-control rounded-0"></div>');
         });
+    </script>
+    <script>
+        var channelList = <?php echo json_encode($chanels); ?>;
     </script>
 </body>
 </html>

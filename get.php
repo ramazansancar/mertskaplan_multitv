@@ -33,7 +33,7 @@ function getVideoId($channelInfo){
     if(!empty($channelInfo['channelId'])){
         $url = 'https://www.youtube.com/channel/'.$channelInfo['channelId'].'/live';
     }else if(!empty($channelInfo['username'])){
-        $url = 'https://www.youtube.com/'.$channelInfo['username'].'/live';
+        $url = 'https://www.youtube.com/@'.$channelInfo['username'].'/live';
     }else{
         return json_encode([
                 "status" => "error",
@@ -55,16 +55,25 @@ function getVideoId($channelInfo){
     $html = curl_exec($ch);
     curl_close($ch);
 
-    preg_match('/\"videoId\":\"(.+?)\"/', $html, $matches);
+    preg_match('/\"videoId\":\"(.+?)\"/', $html, $videoIdMatches);
+    preg_match('/\"channelName\":\"(.+?)\"/', $html, $channelNameMatches);
+    preg_match_all('/\"canonicalBaseUrl\":\"(.+?)\"/', $html, $channelUsernameMatches);
+    preg_match('/\"channelId\":\"(.+?)\"/', $html, $channelIdMatches);
 
-    $videoId = $matches[1];
+
+    //var_dump($channelUsernameMatches);
+    $channelName = @$channelNameMatches[1];
+    $channelId = @$channelIdMatches[1];
+    $channelUsername = @str_replace('/@','',$channelUsernameMatches[1][1]);
+    $videoId = @$videoIdMatches[1];
 
     if(!isset($videoId)) return json_encode([
         "status" => "error",
         "message" => "videoId not found",
         "data" => [
-            "channelId" => $channelInfo['channelId'],
-            "username" => $channelInfo['username'],
+            "name" => $channelName,
+            "channelId" => $channelId,
+            "username" => $channelUsername,
             "videoId" => null
         ]
     ]);
@@ -73,8 +82,9 @@ function getVideoId($channelInfo){
         "status" => "success",
         "message" => "videoId found",
         "data" => [
-            "channelId" => $channelInfo['channelId'],
-            "username" => $channelInfo['username'],
+            "name" => $channelName,
+            "channelId" => $channelId,
+            "username" => $channelUsername,
             "videoId" => $videoId
         ]
     ]);
@@ -117,16 +127,17 @@ if($_GET){
     }
 
     if(isset($_GET['channelId']) && !empty($_GET['channelId']) && !is_null($_GET['channelId'])){
-        return getVideoId(["channelId" => $_GET['channelId']]);
+        echo getVideoId(["channelId" => $_GET['channelId']]);
     }else if(isset($_GET['username']) && !empty($_GET['username']) && !is_null($_GET['username'])){
-        return getVideoId(["username" => $_GET['username']]);
+        echo getVideoId(["username" => $_GET['username']]);
     }else if(isset($_GET['channelId']) && !empty($_GET['channelId']) && !is_null($_GET['channelId']) && isset($_GET['username']) && !empty($_GET['username']) && !is_null($_GET['username'])){
-        return getVideoId(["channelId" => $_GET['channelId'], "username" => $_GET['username']]);
+        echo getVideoId(["channelId" => $_GET['channelId'], "username" => $_GET['username']]);
     }else{
-        return json_encode([
+        echo json_encode([
             "status" => "error",
             "message" => "channelId or username is not defined",
             "data" => [
+                "name" => null,
                 "channelId" => null,
                 "username" => null,
                 "videoId" => null

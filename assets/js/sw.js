@@ -1,6 +1,6 @@
 const CACHE = "pwabuilder-offline-page";
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-const offlineFallbackPage = "https://lab.mertskaplan.com/multitv/no-connection.php";
+const offlineFallbackPage = "https://portal.ramazansancar.com.tr/multitv/no-connection.php";
 
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
