@@ -116,9 +116,9 @@ if(!isset($channelId) && !empty($channelId) && !is_null($channelId) && !isset($u
     echo 'channelId or username is not defined';
     return;
 }
-if(!isset($channelId) && !empty($channelId) && !is_null($channelId)){
+if(!empty($channelId)){
     $videoId = json_decode(getVideoId(["channelId" => $channelId]))->data->videoId;
-}else if(!isset($username) && !empty($username) && !is_null($username)){
+}else if(!empty($username)){
     $videoId = json_decode(getVideoId(["username" => $username]))->data->videoId;
 }else{
     echo 'channelId or username is not defined';
