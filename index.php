@@ -43,7 +43,6 @@
             //"Show TV" => ["channelId" => "UC9JMe_We017gYrRc7kZHgmg", "username" => "showtv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
             //"Fox TV" => ["channelId" => "UCJe13zu6MyE6Oueac41KAqg", "username" => "FOXTurkiye"], // Ülke kısıtlaması var (Türkiye için)
             //"360 TV" => ["channelId" => "UCfqRQZ40fwEdaDWPuR7tvcw", "username" => "tv360"], // YouTube kanalı üzerinden canlı yayın yok!
-            "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
             "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
             //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
             "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
@@ -51,6 +50,7 @@
             "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
             "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
             "Özlem Gürses" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
+            "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
             "Bi Haber" => ["channelId" => "UCT1QJrOPtGWYyWkXry8uT4w", "username" => "bihabercanli"],
             "Artı TV" => ["channelId" => "UCxVicskgBc8OD66iLKc7Uaw", "username" => "ArtTv_Resmi"],
             "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
