@@ -31,11 +31,9 @@
             "24 TV" => ["channelId" => "UCN7VYCsI4Lx1-J4_BtjoWUA", "username" => "YirmidortTV"],
             "TGRT Haber" => ["channelId" => "UCzgrZ-CndOoylh2_e72nSBQ", "username" => "tgrthaber"],
             "KRT TV" => ["channelId" => "UCVKWwHoLwUMMa80cu_1uapA", "username" => "KRTCANLI"],
-            "Bi Haber" => ["channelId" => "UCT1QJrOPtGWYyWkXry8uT4w", "username" => "bihabercanli"],
             "TELE 1" => ["channelId" => "UCoHnRpOS5rL62jTmSDO5Npw", "username" => "Tele1comtr"],
             //"Bloomberg HT" => ["channelId" => "UCApLxl6oYQafxvykuoC2uxQ", "username" => "bloomberght"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
             "Ulusal Kanal" => ["channelId" => "UC6T0L26KS1NHMPbTwI1L4Eg", "username" => "ulusalkanalTV"],
-            "Artı TV" => ["channelId" => "UCxVicskgBc8OD66iLKc7Uaw", "username" => "ArtTv_Resmi"],
             "TVNET" => ["channelId" => "UC8rh34IlJTN0lDZlTwzWzjg", "username" => "TVNET"],
             //"Ülke TV" => ["channelId" => "UCi65FGbYYj-OzJm2luB_fNQ", "username" => "ulketv"], // Kanal taşınmış
             "Ülke TV Canlı Yayın" => ["channelId" => "UCT1GDGt-pNYZ4E0kanZHUKQ", "username" => "UlkeTVCanliYayin"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
@@ -47,13 +45,15 @@
             //"360 TV" => ["channelId" => "UCfqRQZ40fwEdaDWPuR7tvcw", "username" => "tv360"], // YouTube kanalı üzerinden canlı yayın yok!
             "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
             "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
-            "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
             //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
             "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
             "Fatih Altaylı" => ["channelId" => "UCdS7OE5qbJQc7AG4SwlTzKg", "username" => "fatihaltayli"],
             "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
             "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
             "Özlem Gürses" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
+            "Bi Haber" => ["channelId" => "UCT1QJrOPtGWYyWkXry8uT4w", "username" => "bihabercanli"],
+            "Artı TV" => ["channelId" => "UCxVicskgBc8OD66iLKc7Uaw", "username" => "ArtTv_Resmi"],
+            "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
             "Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
         );
 
