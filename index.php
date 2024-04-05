@@ -7,7 +7,10 @@
     Source: https://github.com/ramazansancar/mertskaplan_multitv
 */
     $root = 'https://portal.ramazansancar.com.tr/multitv/';
-    //$root = 'http://localhost/mertskaplan_multitv/';
+    //$root = 'http://localhost/multitv/';
+    $type = isset($_GET['type']) ? $_GET['type'] : null;
+    $footer = "";
+
     if (isset($_GET['cn']) && (isset($_GET['ci']) || isset($_GET['cu']))) {
         $chanels = array();
         foreach ($_GET['cn'] as $key => $cn) {
@@ -18,46 +21,227 @@
             }
         }
     } else {
-        $chanels = array(
-            "NTV" => ["channelId" => "UC9TDTjbOjFB9jADmPhSAPsw", "username" => "NTV"],
-            //"CNN Türk" => ["channelId" => "UCV6zcRug6Hqp1UX_FdyUeBg", "username" => "cnnturk"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
-            //"Habertürk" => ["channelId" => "UCn6dNfiRE_Xunu7iMyvD7AA", "username" => "haberturktv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
-            "Haber Global" => ["channelId" => "UCtc-a9ZUIg0_5HpsPxEO7Qg", "username" => "haberglobal"],
-            "TRT Haber" => ["channelId" => "UCBgTP2LOFVPmq15W-RH-WXA", "username" => "trthaber"],
-            "A Haber" => ["channelId" => "UCKQhfw-lzz0uKnE1fY1PsAA", "username" => "ahaber"], // telif hakkı sebebiyle kaldırıldı
-            //"A Spor" => ["channelId" => "UCJElRTCNEmLemgirqvsW63Q", "username" => "ASpor"], // telif hakkı sebebiyle kaldırıldı
-            "TV 100" => ["channelId" => "UCndsdUW_oPLqpQJY9J8oIRg", "username" => "tv100"],
-            "Halk TV" => ["channelId" => "UCf_ResXZzE-o18zACUEmyvQ", "username" => "Halktvkanali"],
-            "24 TV" => ["channelId" => "UCN7VYCsI4Lx1-J4_BtjoWUA", "username" => "YirmidortTV"],
-            "TGRT Haber" => ["channelId" => "UCzgrZ-CndOoylh2_e72nSBQ", "username" => "tgrthaber"],
-            "KRT TV" => ["channelId" => "UCVKWwHoLwUMMa80cu_1uapA", "username" => "KRTCANLI"],
-            "TELE 1" => ["channelId" => "UCoHnRpOS5rL62jTmSDO5Npw", "username" => "Tele1comtr"],
-            //"Bloomberg HT" => ["channelId" => "UCApLxl6oYQafxvykuoC2uxQ", "username" => "bloomberght"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
-            "Ulusal Kanal" => ["channelId" => "UC6T0L26KS1NHMPbTwI1L4Eg", "username" => "ulusalkanalTV"],
-            "TVNET" => ["channelId" => "UC8rh34IlJTN0lDZlTwzWzjg", "username" => "TVNET"],
-            //"Ülke TV" => ["channelId" => "UCi65FGbYYj-OzJm2luB_fNQ", "username" => "ulketv"], // Kanal taşınmış
-            "Ülke TV Canlı Yayın" => ["channelId" => "UCT1GDGt-pNYZ4E0kanZHUKQ", "username" => "UlkeTVCanliYayin"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
-            "Bengü Türk" => ["channelId" => "UChNgvcVZ_ggDdZ0zCcuuzFw", "username" => "tvbenguturk"],
-            //"Kanal D" => ["channelId" => "UCFoe1tg8MuHjRzmqXtV816A", "username" => "kanald"], // Canlı yayın yok!
-            //"Show TV" => ["channelId" => "UC9JMe_We017gYrRc7kZHgmg", "username" => "showtv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
-            //"Fox TV" => ["channelId" => "UCJe13zu6MyE6Oueac41KAqg", "username" => "FOXTurkiye"], // Ülke kısıtlaması var (Türkiye için)
-            //"360 TV" => ["channelId" => "UCfqRQZ40fwEdaDWPuR7tvcw", "username" => "tv360"], // YouTube kanalı üzerinden canlı yayın yok!
-            "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
-            //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
-            "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
-            "Fatih Altaylı" => ["channelId" => "UCdS7OE5qbJQc7AG4SwlTzKg", "username" => "fatihaltayli"],
-            "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
-            "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
-            "Özlem Gürses" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
-            "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
-            "Bi Haber" => ["channelId" => "UCT1QJrOPtGWYyWkXry8uT4w", "username" => "bihabercanli"],
-            "Artı TV" => ["channelId" => "UCxVicskgBc8OD66iLKc7Uaw", "username" => "ArtTv_Resmi"],
-            "Flash Haber TV" => ["channelId" => "UCNcjCb2RnA3eMMhTZSxZu3A", "username" => "FlashHaberTV"],
-            "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
-            "Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
-        );
+        switch($type) {
+            case 'siyasi':
+            case 'siyasiler':
+            case 'siyaset':
+            case 'siyasal':
+            case 'politik':
+            case 'politikacı':
+            case 'politikaci':
+            case 'politikacilar':
+            case 'politikacılar':
+                $footer = 'Sadece aktif olan siyasetçiler listelenmiştir. Eklenmesini istediğiniz politikacılar için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
+                $chanels = array(
+                    "Recep Tayyip Erdoğan" => ["channelId" => "UCiHR69jCQX8uoH-B1tX6lzg", "username" => "rterdogan"],
+                    "Ekrem İmamoğlu" => ["channelId" => "UCT0byua4qIz2wtrmnXoPK6w", "username" => "ekremimamoglu"],
+                    "Mansur Yavaş" => ["channelId" => "UCP2jBXRfDT1O329VM5C3UIg", "username" => "mansuryavastv"],
+                    "Meral Akşener" => ["channelId" => "UCULiRMkz6c41XujDO4j0SCw", "username" => "meralaksener"],
+                    "Ahmet Davutoğlu" => ["channelId" => "UCkgZUB4RvfmxAogR9a5Y-RA", "username" => "AhmetDavutoglu"],
+                    "Ali Babacan" => ["channelId" => "UC4J1GxksowPUpvhGAuR_N6A", "username" => "alibabacan"],
+                    "Muharrem İnce" => ["channelId" => "UCgZgM-vNF7jzZz2b0o63hHQ", "username" => "MuharremInceCB"],
+                    //"Devlet Bahçeli" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    "Kemal Kılıçdaroğlu" => ["channelId" => "UCi9nvUMXpyT-jws9axiFyKw", "username" => "kemalkilicdaroglu"],
+                    //"Temel Karamollaoğlu" => ["channelId" => "", "username" => "temelkaramollaoglu"], // Kanal yok!
+                    //"Selahattin Demirtaş" => ["channelId" => "", "username" => "selahattindemirtas"], // Kanal yok!
+                );
+                break;
+            
+            case 'parti':
+            case 'partiler':
+                $footer = 'Sadece aktif olan siyasi partiler listelenmiştir. Eklenmesini/aktif edilmesini istediğiniz partiler için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
+                # Kaynak: https://www.yargitaycb.gov.tr/documents/ek-1711443302.pdf | https://www.yargitaycb.gov.tr/item/1088/faaliyette-olan-siyasi-partiler
+                $chanels = array(
+                    // # Aktif olmayanlar
+                    "Demokrat Parti (DP)" => ["channelId" => "UCu-bqQCx6GJry6glbuanLIA", "username" => ""],
+                    "Milliyetçi Hareket Partisi (MHP)" => ["channelId" => "UCoggvEhFysDZL6TI9GDmUBw", "username" => "milliyetcihareketpartisi"],
+                    #"Millet Partisi (MİLLET)" => ["channelId" => "UCqLvbGY25ysHw2NPvw87VRA", "username" => "milletpartisi"],
+                    "Demokratik Sol Parti (DSP)" => ["channelId" => "UCnYvAMSLFtH8dshD9lHlWow", "username" => ""],
+                    #"Vatan Partisi (VATAN)" => ["channelId" => "UCE3W1rzzMDNikysE1ocwA2A", "username" => "vatanpartisi"],
+                    "Cumhuriyet Halk Partisi (CHP)" => ["channelId" => "UC1CwT6tO2cvwkuviGSqDUog", "username" => "chpgenelmerkezi"],
+                    #"Genç Parti (GENÇPARTİ)" => ["channelId" => "UC4JAiEopGNFGlNm1lXUbPlA", "username" => ""],
+                    #"Türkiye Sosyalist İşçi Partisi (TSİP)" => ["channelId" => "UCn1VSOAsNUsiHQGGvZCQAsw", "username" => ""], // Kanal yok!
+                    "Büyük Birlik Partisi (BÜYÜK BİRLİK)" => ["channelId" => "UC8yJfQB9b5yylAFDY2QJfGA", "username" => "bbpgenelmerkezi"],
+                    "Türkiye Komünist Partisi (TKP)" => ["channelId" => "UC376ZDYhRghmbXPQvqFnhNQ", "username" => "TurkiyeKomunistPartisi"],
+                    #"Sol Parti (SOL PARTİ)" => ["channelId" => "UCOrhAHBvzE07n9p7bENCzvg", "username" => ""],
+                    #"Liberal Demokrat Parti (LDP)" => ["channelId" => "UC2_ct-6Mn77YlqqsYB4I4xg", "username" => "LiberalDemokratParti"],
+                    #"Emek Partisi (EMEP)" => ["channelId" => "UC4YBQxKkQ-gDXp-WTPqbYLA", "username" => "emekpartisi"],
+                    //"Devrimci Sosyalist İşçi Partisi (DSİP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    #"Teknoloji Kalkınma Partisi (TEK PARTİ)" => ["channelId" => "UCBIGJvIeYXKwhrRE49f_gmw", "username" => ""],
+                    "Saadet Partisi (SAADET)" => ["channelId" => "UCTVlW56P24ITK0BwPKpeGow", "username" => "SaadetPartisiTV"],
+                    "Adalet Ve Kalkınma Partisi (AK PARTİ)" => ["channelId" => "UCiHR69jCQX8uoH-B1tX6lzg", "username" => "akparti"],
+                    "Bağımsız Türkiye Partisi (BTP)" => ["channelId" => "UCRBaQUa3JsbuqHOW80MLfKg", "username" => "BagmszTurkiyePartisi"],
+                    #"Hak Ve Özgürlükler Partisi (HAK-PAR)" => ["channelId" => "UCvPVWClAjEJ6WA2pz0f6HbA", "username" => ""],
+                    #"Yurt Partisi (YURT-P)" => ["channelId" => "UCFydYr01ATYWrpLvtH2-fRQ", "username" => ""],
+                    #"Bağımsız Cumhuriyet Partisi (BCP)" => ["channelId" => "UCQt6BXKZF6tR1HSqOOv8V2g", "username" => "bagimsizcumhuriyetpartisi"],
+                    //"Sağduyu Partisi (SAGDUYU)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    //"Ayyıldız Partisi (AYP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    #"Emekçi Hareket Partisi (EHP)" => ["channelId" => "UCAf3OM3GwHZFwodDPjL6iCg", "username" => "EmekciHareketPartisiEHP"],
+                    #"Halkin Kurtuluş Partisi (HKP)" => ["channelId" => "UCEfCoZUPm032rQD49X_EcsQ", "username" => "TvKurtulus1"],
+                    //"Müdafaa-i Hukuk Hareketi Partisi (MHHP)" => ["channelId" => "", "username" => ""], // Kanal yok! Olabilir ChId: UCCqmf4a1UFATcerzwk9EWRg
+                    #"İşçinin Kendi Partisi (İKEP)" => ["channelId" => "UCAcPFjLA1BPU6EZ5DoivVBA", "username" => ""],
+                    #"Yüce Diriliş Partisi (YÜCE DİRİ-P)" => ["channelId" => "UCz_NEUHfcxE1sAQceM_N9tw", "username" => ""],
+                    //"Doğru Yol Partisi (DYP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    //"Devrimci İşçi Partisi (DİP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    //"Ebedi Nizam Partisi (ENPA)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    #"Demokratik Bölgeler Partisi (DBP)" => ["channelId" => "UCvmCHkrekohyRLDs0VQ6fiw", "username" => "DBPDemokratikBolgelerPartisi"],
+                    #"Hak Ve Hakikat Partisi (HAK PARTİ)" => ["channelId" => "UCwwvIJjqWbzuXwmLm0lrpYw", "username" => ""],
+                    //"Ezilenlerin Sosyalist Partisi (ESP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    //"Ulusal Parti (ULUSAL PARTİ)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    #"Anavatan Partisi (ANAVATAN)" => ["channelId" => "UCSGdzOr8-NLedcQR9VxbHbw", "username" => "AnavatanPartisi1983"],
+                    #"Özgürlük Ve Sosyalizm Partisi (ÖSP)" => ["channelId" => "UCYFcPUhR1KU-oxo2K9KQ8Dg", "username" => ""],
+                    //"Hak Ve Adalet Partisi (HAP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    //"Halklarin Demokratik Partisi (HDP)" => ["channelId" => "UCcR5J5hmVJEgbEWxMcTep0w", "username" => "DEMGenelMerkezi"], // İsmi DEM ile değişti.
+                    "Halklarin Eşitlik Ve Demokrasi Partisi (DEM Parti)" => ["channelId" => "UCcR5J5hmVJEgbEWxMcTep0w", "username" => "DEMGenelMerkezi"],
+                    "Hür Dava Partisi (HÜDA PAR)" => ["channelId" => "UC40AyQESu_fuAmVwxxp5S0g", "username" => "HUDAPARHurDavaPartisi"],
+                    #"Yeni Türkiye Partisi (YTP)" => ["channelId" => "UC0QCCcLLdQEpH321ZU7uKTQ", "username" => "YTPYoutube"],
+                    #"Sosyalist Yeniden Kuruluş Paritsi (SYKP)" => ["channelId" => "UCWysMt4kOJ8HFV29MfnfuRQ", "username" => "SYKPGenelMerkez"],
+                    #"Kadın Partisi (KP)" => ["channelId" => "UCMppSChyEdgrvohCeiAdO4g", "username" => "KadinPartisi"],
+                    #"Turan Hareketi Partisi (TURAN)" => ["channelId" => "UCr5PRP0gofOIY-QITCLQ-3A", "username" => "TuranHareketiPartisiOfficial"],
+                    #"Merkez Parti (MEP)" => ["channelId" => "UCpMog9DeHu1zBK73i9UrSjw", "username" => "MerkezPartiOfficial"],
+                    //"Hak Ve Huzur Partisi (HHP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    "Komünist Parti" => ["channelId" => "UC376ZDYhRghmbXPQvqFnhNQ", "username" => "TurkiyeKomunistPartisi"],
+                    //"Cihan Partisi (CİHAN PARTİSİ)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    //"Çoğulcu Demokrasi Partisi (ÇDP)" => ["channelId" => "", "username" => ""], // Kanal yok!
+                    /* ! TODO: Kontrol edilecek!
+                    "Türkiye Ekonomi Ve Kalkınma Partisi (TEKP)" => ["channelId" => "", "username" => ""],
+                    "Milli Mücadele Partisi (MMP)" => ["channelId" => "", "username" => ""],
+                    "As Parti (ASP)" => ["channelId" => "", "username" => ""],
+                    "İşçi Demokrasisi Partisi (İDP)" => ["channelId" => "", "username" => ""],
+                    "Türkiye Komünist Hareketi (TKH)" => ["channelId" => "", "username" => ""],
+                    "Birleşik Devrimci Parti (DEVRİMCİ PARTİ)" => ["channelId" => "", "username" => ""],
+                    "Adalet Partisi (AP)" => ["channelId" => "", "username" => ""],
+                    "Sosyalist Emekçiler Partisi (SEP)" => ["channelId" => "", "username" => ""],
+                    "Demokrasi Zamani Partisi (DEZA - PAR)" => ["channelId" => "", "username" => ""],
+                    "Osmanli Partisi" => ["channelId" => "", "username" => ""],
+                    "Güven Adalet Ve Aydınlık Partisi (GAAP)" => ["channelId" => "", "username" => ""],*/
+                    "İyi Parti (İYİ PARTİ)" => ["channelId" => "UCBY4GZ847-UqlJcSCxN7BtA", "username" => "iyiparti"],
+                    "Türkiye İşçi Partisi (TİP)" => ["channelId" => "", "username" => "TIPGenelMerkez"],
+                    #"Ötüken Birliği Partisi (ÖTÜKEN)" => ["channelId" => "", "username" => ""],
+                    #"Adalet Birlik Partisi (AB PARTİ)" => ["channelId" => "", "username" => ""],
+                    "Yeniden Refah Partisi (YENİDEN REFAH)" => ["channelId" => "", "username" => ""],
+                    #"Ülkem Partisi (ÜLKEM)" => ["channelId" => "", "username" => ""],
+                    "Gelecek Partisi (GELECEK PARTİSİ)" => ["channelId" => "UCiiB5B9F9vmvyX8iKaFV5TA", "username" => "GelecekPartisiTR"],
+                    #"Anadolu Birliği Partisi (ABP)" => ["channelId" => "", "username" => ""],
+                    #"Aydınlık Geleceğin Partisi (AYGİP)" => ["channelId" => "", "username" => ""],
+                    #"Merkez Ana Partisi (MAP)" => ["channelId" => "", "username" => ""],
+                    #"Bariş Ve Eşitlik Partisi (BEP)" => ["channelId" => "", "username" => ""],
+                    #"Güç Birliği Partisi (GBP)" => ["channelId" => "", "username" => ""],
+                    "Demokrasi Ve Atilim Partisi (DEVA PARTİSİ)" => ["channelId" => "", "username" => ""],
+                    #"Toplumsal Özgürlük Partisi (TÖP)" => ["channelId" => "", "username" => ""],
+                    #"Yenilik Partisi (YP)" => ["channelId" => "", "username" => ""],
+                    #"Cumhuriyet Ve istiklal Partisi (CİP)" => ["channelId" => "", "username" => ""],
+                    #"Güzel Parti" => ["channelId" => "", "username" => ""],
+                    #"Doğru Parti (DOğRU PARTİ)" => ["channelId" => "", "username" => ""],
+                    #"Ocak Partisi (OCAK)" => ["channelId" => "", "username" => ""],
+                    #"Milli Parti" => ["channelId" => "", "username" => ""],
+                    #"Devlet Partisi" => ["channelId" => "", "username" => ""],
+                    #"Milliyetçi Cumhuriyet Partisi" => ["channelId" => "", "username" => ""],
+                    #"Devrim Hareketi" => ["channelId" => "", "username" => ""],
+                    #"Vatan Ve Hürriyet Partisi" => ["channelId" => "", "username" => ""],
+                    #"Türkiye ittifaki Partisi" => ["channelId" => "", "username" => ""],
+                    #"Sevgi Ve Saygi Partisi" => ["channelId" => "", "username" => ""],
+                    #"Doğuş Partisi" => ["channelId" => "", "username" => ""],
+                    #"Cumhuriyet Ve Adalet Partisi" => ["channelId" => "", "username" => ""],
+                    "Memleket Partisi (MEMLEKET)" => ["channelId" => "UCyxWsC79bExABfH4HYq74SA", "username" => "MemleketPartisi"],
+                    #"Yeniden Diriliş Partisi" => ["channelId" => "", "username" => ""],
+                    #"Tuğra Partisi (TP)" => ["channelId" => "", "username" => ""],
+                    #"Aydınlık Demokrasi Partisi" => ["channelId" => "", "username" => ""],
+                    "Zafer Partisi" => ["channelId" => "UCyj_RIJNEka5Ff5QTK6qmFw", "username" => "zaferpartisi"],
+                    #"Bağımsızlık Partisi (BAP)" => ["channelId" => "", "username" => ""],
+                    #"Liberal Parti (LP)" => ["channelId" => "", "username" => ""],
+                    #"Milli Birlik Ve Gelişim Partisi" => ["channelId" => "", "username" => ""],
+                    #"Adaletin Aydınlığı Partisi (ADAY)" => ["channelId" => "", "username" => ""],
+                    #"Vatan Severler Partisi" => ["channelId" => "", "username" => ""],
+                    #"Al Sancak Partisi (AL SANCAK)" => ["channelId" => "", "username" => ""],
+                    #"Yükseliş Partisi (YÜKSELİŞ)" => ["channelId" => "", "username" => ""],
+                    #"Türkiye Gençlik Partisi" => ["channelId" => "", "username" => ""],
+                    #"Adalet Ve Özgürlük Partisi" => ["channelId" => "", "username" => ""],
+                    #"Milli Yol Partisi (MİLLİ YOL)" => ["channelId" => "", "username" => ""],
+                    #"Şahlanış Partisi" => ["channelId" => "", "username" => ""],
+                    #"Türkiye'nin Sesi Altınçağ Partisi" => ["channelId" => "", "username" => ""],
+                    #"Adalet Ve Demokrasi Partisi (ADEPE)" => ["channelId" => "", "username" => ""],
+                    #"Milliyetçi Türkiye Partisi (MTP)" => ["channelId" => "", "username" => ""],
+                    #"Kizilelma Partisi (KP)" => ["channelId" => "", "username" => ""],
+                    #"Ulusun Partisi (UP)" => ["channelId" => "", "username" => ""],
+                    #"Merkez Sağ Parti" => ["channelId" => "", "username" => ""],
+                    #"Milliyetçi Sol Parti (MİLLİ SOL)" => ["channelId" => "", "username" => ""],
+                    #"Milli Beraberlik Partisi" => ["channelId" => "", "username" => ""],
+                    #"Ana Yol Partisi (ANA YOL)" => ["channelId" => "", "username" => ""],
+                    #"Büyük iktidar Partisi (Bİ PARTİ)" => ["channelId" => "", "username" => ""],
+                    #"Adalet Ve Hürriyet Partisi (AHP)" => ["channelId" => "", "username" => ""],
+                    #"Ata Parti (ATA PARTİ)" => ["channelId" => "", "username" => ""],
+                    #"İnsan Ve Özgürlük Partisi" => ["channelId" => "", "username" => ""],
+                    #"Yerli Ve Milli Parti (YMP)" => ["channelId" => "", "username" => ""],
+                    #"Sosyalist Cumhuriyet Partisi (SCP)" => ["channelId" => "", "username" => ""],
+                    #"Adil Türkiye Partisi (ATP)" => ["channelId" => "", "username" => ""],
+                    #"Umuda Yürüyüş Partisi (UYP)" => ["channelId" => "", "username" => ""],
+                    #"Halkin Sesi Partisi" => ["channelId" => "", "username" => ""],
+                    #"Türkiye Uyaniş Partisi (TUP)" => ["channelId" => "", "username" => ""],
+                    #"Anadolu Medeniyet Partisi (ANA PARTİ)" => ["channelId" => "", "username" => ""],
+                    #"Genç Türkiye Partisi (GTP)" => ["channelId" => "", "username" => ""],
+                    #"Türkiye Güven Partisi (TGP)" => ["channelId" => "", "username" => ""],
+                    #"Türkiye Emekliler Partisi (TEP)" => ["channelId" => "", "username" => ""],
+                    #"Turan Partisi (TURAN PARTİSİ)" => ["channelId" => "", "username" => ""],
+                    #"Büyük Parti (BP)" => ["channelId" => "", "username" => ""],
+                    #"Yeşil Sol Parti (YSP)" => ["channelId" => "", "username" => ""],
+                    #"Türkiye'm Partisi (TÜRKİYE'M)" => ["channelId" => "", "username" => ""],
+                    #"Küresel Adalet Ve Liyakat Partisi (KALP)" => ["channelId" => "", "username" => ""],
+                    #"Cumhuriyet Partisi" => ["channelId" => "", "username" => ""],
+                    #"Türkiye Emekliler Ve Çalişanlar Partisi (TEÇP)" => ["channelId" => "", "username" => ""],
+                    #"Toplumcu Kurtuluş Partisi (1920 TKP)" => ["channelId" => "", "username" => ""],
+                    #"Yeni Yüzyıl Partisi (YENİ YÜZYIL)" => ["channelId" => "", "username" => ""],
+                    #"Evrensel Medeniyet Partisi (EMP)" => ["channelId" => "", "username" => ""],
+                    #"Güçlü Türkiye Partisi" => ["channelId" => "", "username" => ""],
+                );
+                break;
 
-        // Null değerleri temizle
+            case 'haber':
+            case '':
+            case null:
+            default:
+                $footer = 'Sadece aktif olan haber kanalları listelenmiştir. Eklenmesini istediğiniz kanallar için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
+                $chanels = array(
+                    "NTV" => ["channelId" => "UC9TDTjbOjFB9jADmPhSAPsw", "username" => "NTV"],
+                    //"CNN Türk" => ["channelId" => "UCV6zcRug6Hqp1UX_FdyUeBg", "username" => "cnnturk"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
+                    //"Habertürk" => ["channelId" => "UCn6dNfiRE_Xunu7iMyvD7AA", "username" => "haberturktv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
+                    "Haber Global" => ["channelId" => "UCtc-a9ZUIg0_5HpsPxEO7Qg", "username" => "haberglobal"],
+                    "TRT Haber" => ["channelId" => "UCBgTP2LOFVPmq15W-RH-WXA", "username" => "trthaber"],
+                    "A Haber" => ["channelId" => "UCKQhfw-lzz0uKnE1fY1PsAA", "username" => "ahaber"], // telif hakkı sebebiyle kaldırıldı
+                    //"A Spor" => ["channelId" => "UCJElRTCNEmLemgirqvsW63Q", "username" => "ASpor"], // telif hakkı sebebiyle kaldırıldı
+                    "TV 100" => ["channelId" => "UCndsdUW_oPLqpQJY9J8oIRg", "username" => "tv100"],
+                    "Halk TV" => ["channelId" => "UCf_ResXZzE-o18zACUEmyvQ", "username" => "Halktvkanali"],
+                    "24 TV" => ["channelId" => "UCN7VYCsI4Lx1-J4_BtjoWUA", "username" => "YirmidortTV"],
+                    "TGRT Haber" => ["channelId" => "UCzgrZ-CndOoylh2_e72nSBQ", "username" => "tgrthaber"],
+                    "KRT TV" => ["channelId" => "UCVKWwHoLwUMMa80cu_1uapA", "username" => "KRTCANLI"],
+                    "TELE 1" => ["channelId" => "UCoHnRpOS5rL62jTmSDO5Npw", "username" => "Tele1comtr"],
+                    //"Bloomberg HT" => ["channelId" => "UCApLxl6oYQafxvykuoC2uxQ", "username" => "bloomberght"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
+                    "Ulusal Kanal" => ["channelId" => "UC6T0L26KS1NHMPbTwI1L4Eg", "username" => "ulusalkanalTV"],
+                    "TVNET" => ["channelId" => "UC8rh34IlJTN0lDZlTwzWzjg", "username" => "TVNET"],
+                    //"Ülke TV" => ["channelId" => "UCi65FGbYYj-OzJm2luB_fNQ", "username" => "ulketv"], // Kanal taşınmış
+                    "Ülke TV Canlı Yayın" => ["channelId" => "UCT1GDGt-pNYZ4E0kanZHUKQ", "username" => "UlkeTVCanliYayin"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
+                    "Bengü Türk" => ["channelId" => "UChNgvcVZ_ggDdZ0zCcuuzFw", "username" => "tvbenguturk"],
+                    //"Kanal D" => ["channelId" => "UCFoe1tg8MuHjRzmqXtV816A", "username" => "kanald"], // Canlı yayın yok!
+                    //"Show TV" => ["channelId" => "UC9JMe_We017gYrRc7kZHgmg", "username" => "showtv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
+                    //"Fox TV" => ["channelId" => "UCJe13zu6MyE6Oueac41KAqg", "username" => "FOXTurkiye"], // Ülke kısıtlaması var (Türkiye için)
+                    //"360 TV" => ["channelId" => "UCfqRQZ40fwEdaDWPuR7tvcw", "username" => "tv360"], // YouTube kanalı üzerinden canlı yayın yok!
+                    "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
+                    //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
+                    "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
+                    "Fatih Altaylı" => ["channelId" => "UCdS7OE5qbJQc7AG4SwlTzKg", "username" => "fatihaltayli"],
+                    "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
+                    "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
+                    "Özlem Gürses" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
+                    "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
+                    "Bi Haber" => ["channelId" => "UCT1QJrOPtGWYyWkXry8uT4w", "username" => "bihabercanli"],
+                    "Artı TV" => ["channelId" => "UCxVicskgBc8OD66iLKc7Uaw", "username" => "ArtTv_Resmi"],
+                    "Flash Haber TV" => ["channelId" => "UCNcjCb2RnA3eMMhTZSxZu3A", "username" => "FlashHaberTV"],
+                    "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
+                    "Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
+                );
+                break;
+        }
+        
         $chanels = array_filter($chanels);
     }
 
@@ -83,10 +267,23 @@
             if(strpos($_SERVER["QUERY_STRING"], "channel=$channel") !== false) {
                 return str_replace("channel=$channel", "channel=$x", $_SERVER["QUERY_STRING"]);
             } else {
-                return "channel=$x";
+                return "channel=$x&" . $_SERVER["QUERY_STRING"];
             }
         } else {
             return "channel=$x";
+        }
+    }
+
+    function changeType($x) {
+        global $type;
+        if (!empty($_SERVER["QUERY_STRING"])) {
+            if(strpos($_SERVER["QUERY_STRING"], "type=$type") !== false) {
+                return str_replace("type=$type", "type=$x", $_SERVER["QUERY_STRING"]);
+            } else {
+                return "type=$x&" . $_SERVER["QUERY_STRING"];
+            }
+        } else {
+            return "type=$x";
         }
     }
 ?>
@@ -168,19 +365,19 @@
             if(isset($channelId) && !empty($channelId) && !is_null($channelId) && isset($username) && !empty($username) && !is_null($username)){
                 echo '
                     <div class="col text-center p-0">
-                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?channelId='. $channelId .'&username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed?channelId='. $channelId .'&username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 ';
             }else if(isset($channelId) && !empty($channelId) && !is_null($channelId)){
                 echo '
                     <div class="col text-center p-0">
-                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?channelId='. $channelId .'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed?channelId='. $channelId .'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 ';
             }else if(isset($username) && !empty($username) && !is_null($username)){
                 echo '
                     <div class="col text-center p-0">
-                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed.php?username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed?username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 ';
             }else{
@@ -193,6 +390,11 @@
         } ?>
         </div>
     </div>
+    <?php if($footer){ ?>
+        <div class="footer bg-secondary position-fixed bottom-0 start-50 translate-middle-x w-100">
+            <h6 class="text-center text-white font-weight-bold">*<?=($footer) ? $footer : "";?></h6>
+        </div>
+    <?php } ?>
     <button class="msk-optionsButton btn btn-dark position-fixed rounded-0 position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Ayarlar">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
@@ -213,6 +415,13 @@
             </div>
         </div>
         <div class="offcanvas-body">
+            <h5>Yayın Tipi</h5>
+            <div class="btn-group w-100" role="group" aria-label="Ayarlar">
+                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'haber' || $type == '' || $type == null)  ? ' active' : ''; ?>" href="?<? echo changeType('haber'); ?>">Haber</a>
+                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'siyasi' || $type == 'siyasiler' || $type == 'siyaset' || $type == 'siyasal' || $type == 'politik' || $type == 'politikacı' || $type == 'politikaci' || $type == 'politikacilar' || $type == 'politikacılar')  ? ' active' : ''; ?>" href="?<? echo changeType('politikaci'); ?>">Politikacı</a>
+                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'parti' || $type == 'partiler')  ? ' active' : ''; ?>" href="?<? echo changeType('partiler'); ?>">Partiler</a>
+            </div>
+
             <h5>Kanal sayısı</h5>
             <div class="btn-group w-100" role="group" aria-label="Ayarlar">
                 <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 4)  ? ' active' : ''; ?>" href="?<? echo changeChannel(4); ?>">4</a>
@@ -221,6 +430,7 @@
                 <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 25) ? ' active' : ''; ?>" href="?<? echo changeChannel(25); ?>">25</a>
                 <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 30) ? ' active' : ''; ?>" href="?<? echo changeChannel(30); ?>">30</a>
                 <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 40) ? ' active' : ''; ?>" href="?<? echo changeChannel(40); ?>">40</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 500) ? ' active' : ''; ?>" href="?<? echo changeChannel(500); ?>">Tümü</a>
             </div>
 
             <form methot="get" action="">
