@@ -240,6 +240,15 @@
                     "Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
                 );
                 break;
+
+            case 'belediye':
+            case 'belediyeler':
+                $footer = 'Sadece aktif olan belediyeler listelenmiştir. Eklenmesini istediğiniz belediyeler için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
+                $chanels = array(
+                    "Ankara Büyükşehir Belediyesi" => ["channelId" => "UCHPDorZxpe9c6WDnXKHCjYA", "username" => "ankarabbld"],
+                    "İstanbul Büyükşehir Belediyesi" => ["channelId" => "UCyAn-CGmx_ecg2q0GrhLbcw", "username" => "ibbtvcanli"],
+                );
+                break;
         }
         
         $chanels = array_filter($chanels);
