@@ -429,6 +429,7 @@
                 <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'haber' || $type == '' || $type == null)  ? ' active' : ''; ?>" href="?<? echo changeType('haber'); ?>">Haber</a>
                 <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'siyasi' || $type == 'siyasiler' || $type == 'siyaset' || $type == 'siyasal' || $type == 'politik' || $type == 'politikacı' || $type == 'politikaci' || $type == 'politikacilar' || $type == 'politikacılar')  ? ' active' : ''; ?>" href="?<? echo changeType('politikaci'); ?>">Politikacı</a>
                 <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'parti' || $type == 'partiler')  ? ' active' : ''; ?>" href="?<? echo changeType('partiler'); ?>">Partiler</a>
+                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'belediye' || $type == 'belediyeler')  ? ' active' : ''; ?>" href="?<? echo changeType('belediye'); ?>">Belediye</a>
             </div>
 
             <h5>Kanal sayısı</h5>
