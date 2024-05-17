@@ -93,7 +93,7 @@
                     //"Hak Ve Adalet Partisi (HAP)" => ["channelId" => "", "username" => ""], // Kanal yok!
                     //"Halklarin Demokratik Partisi (HDP)" => ["channelId" => "UCcR5J5hmVJEgbEWxMcTep0w", "username" => "DEMGenelMerkezi"], // İsmi DEM ile değişti.
                     "Halklarin Eşitlik Ve Demokrasi Partisi (DEM Parti)" => ["channelId" => "UCcR5J5hmVJEgbEWxMcTep0w", "username" => "DEMGenelMerkezi"],
-                    "Hür Dava Partisi (HÜDA PAR)" => ["channelId" => "UC40AyQESu_fuAmVwxxp5S0g", "username" => "HUDAPARHurDavaPartisi"],
+                    // --- Yayın yok! ---- //"Hür Dava Partisi (HÜDA PAR)" => ["channelId" => "UC40AyQESu_fuAmVwxxp5S0g", "username" => "HUDAPARHurDavaPartisi"],
                     #"Yeni Türkiye Partisi (YTP)" => ["channelId" => "UC0QCCcLLdQEpH321ZU7uKTQ", "username" => "YTPYoutube"],
                     #"Sosyalist Yeniden Kuruluş Paritsi (SYKP)" => ["channelId" => "UCWysMt4kOJ8HFV29MfnfuRQ", "username" => "SYKPGenelMerkez"],
                     #"Kadın Partisi (KP)" => ["channelId" => "UCMppSChyEdgrvohCeiAdO4g", "username" => "KadinPartisi"],
@@ -228,6 +228,7 @@
                     "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
                     //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
                     "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
+                    "medyascope" => ["channelId" => "UCNCVuaQDvPrZ4oTKG90iqOA", "username" => "medyascope_"],
                     "Fatih Altaylı" => ["channelId" => "UCdS7OE5qbJQc7AG4SwlTzKg", "username" => "fatihaltayli"],
                     "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
                     "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
