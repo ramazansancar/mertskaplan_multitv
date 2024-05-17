@@ -124,5 +124,11 @@ if(!empty($channelId)){
     echo 'channelId or username is not defined';
     return;
 }
+
+if(!isset($videoId)){
+    echo '<b>'.$channelName.'</b> videoId not found';
+    return;
+}
+
 echo '<style>body{margin:0px;}</style><iframe class="" width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/'. $videoId .'?autoplay='. $autoplay .'&mute='. $mute .'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
 ?>

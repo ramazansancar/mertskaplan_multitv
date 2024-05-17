@@ -6,16 +6,14 @@
     Licence: MIT Licence - https://github.com/ramazansancar/mertskaplan_multitv/blob/main/LICENSE
     Source: https://github.com/ramazansancar/mertskaplan_multitv
 */
-    $root = 'https://portal.ramazansancar.com.tr/multitv/';
-    //$root = 'http://localhost/multitv/';
     $type = isset($_GET['type']) ? $_GET['type'] : null;
     $footer = "";
 
     if (isset($_GET['cn']) && (isset($_GET['ci']) || isset($_GET['cu']))) {
-        $chanels = array();
+        $channels = array();
         foreach ($_GET['cn'] as $key => $cn) {
             if((!empty($_GET['ci'][$key]) || !empty($_GET['cu'][$key])) && !empty($cn)){
-                $chanels[$cn] = ["channelId" => $_GET['ci'][$key], "username" => $_GET['cu'][$key]];
+                $channels[$cn] = ["channelId" => $_GET['ci'][$key], "username" => $_GET['cu'][$key]];
             }else{
                 continue;
             }
@@ -32,7 +30,7 @@
             case 'politikacilar':
             case 'politikacılar':
                 $footer = 'Sadece aktif olan siyasetçiler listelenmiştir. Eklenmesini istediğiniz politikacılar için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
-                $chanels = array(
+                $channels = array(
                     "Recep Tayyip Erdoğan" => ["channelId" => "UCiHR69jCQX8uoH-B1tX6lzg", "username" => "rterdogan"],
                     "Ekrem İmamoğlu" => ["channelId" => "UCT0byua4qIz2wtrmnXoPK6w", "username" => "ekremimamoglu"],
                     "Mansur Yavaş" => ["channelId" => "UCP2jBXRfDT1O329VM5C3UIg", "username" => "mansuryavastv"],
@@ -51,7 +49,7 @@
             case 'partiler':
                 $footer = 'Sadece aktif olan siyasi partiler listelenmiştir. Eklenmesini/aktif edilmesini istediğiniz partiler için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
                 # Kaynak: https://www.yargitaycb.gov.tr/documents/ek-1711443302.pdf | https://www.yargitaycb.gov.tr/item/1088/faaliyette-olan-siyasi-partiler
-                $chanels = array(
+                $channels = array(
                     // # Aktif olmayanlar
                     "Demokrat Parti (DP)" => ["channelId" => "UCu-bqQCx6GJry6glbuanLIA", "username" => ""],
                     "Milliyetçi Hareket Partisi (MHP)" => ["channelId" => "UCoggvEhFysDZL6TI9GDmUBw", "username" => "milliyetcihareketpartisi"],
@@ -100,7 +98,7 @@
                     #"Turan Hareketi Partisi (TURAN)" => ["channelId" => "UCr5PRP0gofOIY-QITCLQ-3A", "username" => "TuranHareketiPartisiOfficial"],
                     #"Merkez Parti (MEP)" => ["channelId" => "UCpMog9DeHu1zBK73i9UrSjw", "username" => "MerkezPartiOfficial"],
                     //"Hak Ve Huzur Partisi (HHP)" => ["channelId" => "", "username" => ""], // Kanal yok!
-                    "Komünist Parti" => ["channelId" => "UC376ZDYhRghmbXPQvqFnhNQ", "username" => "TurkiyeKomunistPartisi"],
+                    //"Komünist Parti" => ["channelId" => "", "username" => ""], // Kanal yok!
                     //"Cihan Partisi (CİHAN PARTİSİ)" => ["channelId" => "", "username" => ""], // Kanal yok!
                     //"Çoğulcu Demokrasi Partisi (ÇDP)" => ["channelId" => "", "username" => ""], // Kanal yok!
                     /* ! TODO: Kontrol edilecek!
@@ -116,7 +114,7 @@
                     "Osmanli Partisi" => ["channelId" => "", "username" => ""],
                     "Güven Adalet Ve Aydınlık Partisi (GAAP)" => ["channelId" => "", "username" => ""],*/
                     "İyi Parti (İYİ PARTİ)" => ["channelId" => "UCBY4GZ847-UqlJcSCxN7BtA", "username" => "iyiparti"],
-                    "Türkiye İşçi Partisi (TİP)" => ["channelId" => "", "username" => "TIPGenelMerkez"],
+                    "Türkiye İşçi Partisi (TİP)" => ["channelId" => "UCdz16x_67E4vTvYcbl0qgww", "username" => "TIPGenelMerkez"],
                     #"Ötüken Birliği Partisi (ÖTÜKEN)" => ["channelId" => "", "username" => ""],
                     #"Adalet Birlik Partisi (AB PARTİ)" => ["channelId" => "", "username" => ""],
                     "Yeniden Refah Partisi (YENİDEN REFAH)" => ["channelId" => "", "username" => ""],
@@ -201,7 +199,7 @@
             case null:
             default:
                 $footer = 'Sadece aktif olan haber kanalları listelenmiştir. Eklenmesini istediğiniz kanallar için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
-                $chanels = array(
+                $channels = array(
                     "NTV" => ["channelId" => "UC9TDTjbOjFB9jADmPhSAPsw", "username" => "NTV"],
                     //"CNN Türk" => ["channelId" => "UCV6zcRug6Hqp1UX_FdyUeBg", "username" => "cnnturk"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
                     //"Habertürk" => ["channelId" => "UCn6dNfiRE_Xunu7iMyvD7AA", "username" => "haberturktv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
@@ -245,42 +243,63 @@
             case 'belediye':
             case 'belediyeler':
                 $footer = 'Sadece aktif olan belediyeler listelenmiştir. Eklenmesini istediğiniz belediyeler için <a href="https://github.com/ramazansancar/mertskaplan_multitv/issues/new">buraya</a> tıklayarak bize ulaşabilirsiniz.';
-                $chanels = array(
+                $channels = array(
                     "Ankara Büyükşehir Belediyesi" => ["channelId" => "UCHPDorZxpe9c6WDnXKHCjYA", "username" => "ankarabbld"],
                     "İstanbul Büyükşehir Belediyesi" => ["channelId" => "UCyAn-CGmx_ecg2q0GrhLbcw", "username" => "ibbtvcanli"],
+                    "İzmir Büyükşehir Belediyesi" => ["channelId" => "UC1FsIvLFw-ntqAHWm8nEi5A", "username" => "IZMIRBUYUKSEHIRBLD"],
+                    "İzmirTube" => ["channelId" => "UC1qGGh33_o-Rdr92J5EBG7w", "username" => "izmirtube"],
+                    "ANTALYABBTV" => ["channelId" => "UCIsgWk3dY69jG181YnADFWA", "username" => "ANTALYABBTV"],
+                    "Antalya Büyükşehir Belediyesi" => ["channelId" => "UC-KeJeC0RgDrT8zUzd65hXg", "username" => "AntalyaBuyuksehir"],
+                    "Bursa Büyükşehir Belediyesi" => ["channelId" => "UCwFMjH2wEekJd06bjISeWSA", "username" => "BursaBuyuksehirBelediyesi16"], // username türkçe karakter olduğu için sorunlu! username: BursaBüyükşehirBelediyesi16
+                    "Kayseri Büyükşehir Belediyesi" => ["channelId" => "UC2Eo--ec1_aeEyx3Cd5mItQ", "username" => "kayseribuyuksehirbelediyes9898"],
+                    "Muğla Büyükşehir Belediyesi" => ["channelId" => "UC1VVjI1HqtBDAi5rbsz7_Zg", "username" => "muglabsb"],
+                    "Samsun Büyükşehir Belediyesi (SBB TV)" => ["channelId" => "UCJu6sZlD_IWjYysIQi2uJhg", "username" => "SBBTV55"],
+                    "Manisa Büyükşehir Belediyesi" => ["channelId" => "UCuUyxpMsyXUgXqRsI9-F5eQ", "username" => "ManisaBuyuksehirBldBasnMerkezi"],
+                    "Aydın Büyükşehir Belediyesi" => ["channelId" => "UCkIUgqH_Ljcm4G121q31dmw", "username" => "aydinbsb"],
+                    "Adana Büyükşehir Belediyesi" => ["channelId" => "UC9jYvuaKeUtzqFlZflYABVA", "username" => "AdanaBB"],
+                    "Balıkesir Büyükşehir Belediyesi" => ["channelId" => "UCDsfrMeGmzV59kFDAp5RWng", "username" => "BalkesirBuyuksehirBelediyesi"],
+                    "Şanlıurfa Büyükşehir Belediyesi" => ["channelId" => "UC7iAjvULfSx1t2PfXieXYbQ", "username" => "sanliurfabld"],
+                    "Sakarya Büyükşehir Belediyesi" => ["channelId" => "UCdiV5FZ2FYK8g3Sq333yO9Q", "username" => "sakaryabld"],
+                    "Eskişehir Büyükşehir Belediyesi" => ["channelId" => "UCtpp2WH-fEc2HHseEKpfZDA", "username" => "eskisehirbb"],
+                    //"Diyarbakır Büyükşehir Belediyesi" => ["channelId" => "UCqE_QftkN3FBIwstYLEHrFg", "username" => "diyarbakirbld"], // Kanalda yayın yok!
+                    "Konya Büyükşehir Belediyesi" => ["channelId" => "UC_4nHId6II3WyrS2dVxOxbA", "username" => "konyabuyuksehirbel"],
+                    "Muğla Büyükşehir Belediyesi Canlı Yayın" => ["channelId" => "UC1aQUMwF_DmBOr33n2KGbtA", "username" => "muglabuyuksehirbelediyesi-4150"],
+                    "Van Büyükşehir Belediyesi" => ["channelId" => "UCCy_056Xb95il54msxK89_w", "username" => "vanbuyuksehirbelediyesi851"],
                 );
                 break;
         }
         
-        $chanels = array_filter($chanels);
+        $channels = array_filter($channels);
     }
 
-    $channel = (isset($_GET['channel'])) ? (int)$_GET['channel'] : 9;
+    $channelSize = (isset($_GET['channelSize'])) ? (int)$_GET['channelSize'] : 9;
 
-    if ($channel <= 4) {
+    if($channelSize <= 1) {
+        $rowClass = 'w-100 h-100 justify-content-center align-items-center m-0';
+    } elseif ($channelSize <= 4) {
         $rowClass = 'row row-cols-1 row-cols-sm-2 justify-content-center align-items-center m-0';
-    } elseif ($channel <= 9) {
+    } elseif ($channelSize <= 9) {
         $rowClass = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-center align-items-center m-0';
-    } elseif ($channel <= 16) {
+    } elseif ($channelSize <= 16) {
         $rowClass = 'row row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center align-items-center m-0';
     } else {
         $rowClass = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 justify-content-center align-items-center m-0';
     }
 
-    $chanels = array_slice($chanels, 0, $channel);
+    $channels = array_slice($channels, 0, $channelSize);
     $autoplay = (!isset($_GET['autoplay']) || $_GET['autoplay'] == 'on') ? 1 : 0;
     $mute = 1;
 
     function changeChannel($x) {
-        global $channel;
+        global $channelSize;
         if (!empty($_SERVER["QUERY_STRING"])) {
-            if(strpos($_SERVER["QUERY_STRING"], "channel=$channel") !== false) {
-                return str_replace("channel=$channel", "channel=$x", $_SERVER["QUERY_STRING"]);
+            if(strpos($_SERVER["QUERY_STRING"], "channelSize=$channelSize") !== false) {
+                return str_replace("channelSize=$channelSize", "channelSize=$x", $_SERVER["QUERY_STRING"]);
             } else {
-                return "channel=$x&" . $_SERVER["QUERY_STRING"];
+                return "channelSize=$x&" . $_SERVER["QUERY_STRING"];
             }
         } else {
-            return "channel=$x";
+            return "channelSize=$x";
         }
     }
 
@@ -309,20 +328,20 @@
     <meta property="og:title" content="Multi TV - Haber kanallarını aynı anda izle" />
     <meta property="og:description" content="Aynı anda birden fazla haber kanalını, televizyonu ya da YouTube kanalını izleyebileceğiniz bir çoklu ekran uygulaması." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="<? echo $root; ?>" />
-    <meta property="og:image" content="<? echo $root; ?>assets/img/screenshots/screenshot-1280.jpg" />
+    <meta property="og:url" content="https://portal.ramazansancar.com.tr/multitv/" />
+    <meta property="og:image" content="assets/img/screenshots/screenshot-1280.jpg" />
     <meta property="og:locale" content="tr_TR" />
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:creator" content="">
     <meta name="twitter:title" content="Multi TV - Haber kanallarını aynı anda izle">
     <meta name="twitter:description" content="Aynı anda birden fazla haber kanalını, televizyonu ya da YouTube kanalını izleyebileceğiniz bir çoklu ekran uygulaması.">
-    <meta name="twitter:image" content="<? echo $root; ?>assets/img/screenshots/screenshot-1280.jpg">
+    <meta name="twitter:image" content="assets/img/screenshots/screenshot-1280.jpg">
     <title>Multi TV - Haber kanallarını aynı anda izle</title>
-    <link rel="canonical" href="<? echo $root; ?>">
+    <link rel="canonical" href="https://portal.ramazansancar.com.tr/multitv/">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="manifest" href="<? echo $root; ?>manifest.webmanifest">
-    <link rel="apple-touch-icon" href="<? echo $root; ?>assets/img/logo/multitv-192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="assets/img/logo/multitv-192.png">
     <style>
         .msk-container {
             aspect-ratio: 16/9;
@@ -367,7 +386,7 @@
 <body class="text-bg-dark">
     <div class="msk-container">
         <div class="<? echo $rowClass; ?>">
-        <?php foreach ($chanels as $chanel => $slug) {
+        <?php foreach ($channels as $chanel => $slug) {
             $channelId = isset($slug['channelId']) ? $slug['channelId'] : null;
             $username = isset($slug['username']) ? $slug['username'] : null;
             $channelName = isset($chanel) ? $chanel : null;
@@ -375,19 +394,19 @@
             if(isset($channelId) && !empty($channelId) && !is_null($channelId) && isset($username) && !empty($username) && !is_null($username)){
                 echo '
                     <div class="col text-center p-0">
-                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed?channelId='. $channelId .'&username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="d-grid" width="100%" height="100%" src="embed?channelId='. $channelId .'&username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 ';
             }else if(isset($channelId) && !empty($channelId) && !is_null($channelId)){
                 echo '
                     <div class="col text-center p-0">
-                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed?channelId='. $channelId .'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="d-grid" width="100%" height="100%" src="embed?channelId='. $channelId .'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 ';
             }else if(isset($username) && !empty($username) && !is_null($username)){
                 echo '
                     <div class="col text-center p-0">
-                        <iframe class="d-grid" width="100%" height="100%" src="'. $root .'embed?username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="d-grid" width="100%" height="100%" src="embed?username='.$username.'&channelName='.$channelName.'&autoplay='. $autoplay .'&mute='.$mute.'" title="'. $channelName .'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 ';
             }else{
@@ -401,8 +420,8 @@
         </div>
     </div>
     <?php if($footer){ ?>
-        <div class="footer bg-secondary position-fixed bottom-0 start-50 translate-middle-x w-100">
-            <h6 class="text-center text-white font-weight-bold">*<?=($footer) ? $footer : "";?></h6>
+        <div class="footer text-center position-fixed bottom-0 start-50 translate-middle-x">
+            <kbd class="text-center text-white font-weight-bold" style="font-size:10px;">*<?=($footer) ? $footer : "";?></kbd>
         </div>
     <?php } ?>
     <button class="msk-optionsButton btn btn-dark position-fixed rounded-0 position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Ayarlar">
@@ -435,13 +454,13 @@
 
             <h5>Kanal sayısı</h5>
             <div class="btn-group w-100" role="group" aria-label="Ayarlar">
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 4)  ? ' active' : ''; ?>" href="?<? echo changeChannel(4); ?>">4</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 9)  ? ' active' : ''; ?>" href="?<? echo changeChannel(9); ?>">9</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 16) ? ' active' : ''; ?>" href="?<? echo changeChannel(16); ?>">16</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 25) ? ' active' : ''; ?>" href="?<? echo changeChannel(25); ?>">25</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 30) ? ' active' : ''; ?>" href="?<? echo changeChannel(30); ?>">30</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 40) ? ' active' : ''; ?>" href="?<? echo changeChannel(40); ?>">40</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channel == 500) ? ' active' : ''; ?>" href="?<? echo changeChannel(500); ?>">Tümü</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 4)  ? ' active' : ''; ?>" href="?<? echo changeChannel(4); ?>">4</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 9)  ? ' active' : ''; ?>" href="?<? echo changeChannel(9); ?>">9</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 16) ? ' active' : ''; ?>" href="?<? echo changeChannel(16); ?>">16</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 25) ? ' active' : ''; ?>" href="?<? echo changeChannel(25); ?>">25</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 30) ? ' active' : ''; ?>" href="?<? echo changeChannel(30); ?>">30</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 40) ? ' active' : ''; ?>" href="?<? echo changeChannel(40); ?>">40</a>
+                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 500) ? ' active' : ''; ?>" href="?<? echo changeChannel(500); ?>">Tümü</a>
             </div>
 
             <form methot="get" action="">
@@ -451,7 +470,7 @@
                     <input class="form-check-input" type="checkbox" role="switch" id="autoplay" name="autoplay"<? echo ($autoplay == 1) ? ' checked="checked"' : ''; ?>>
                     <label class="form-check-label" for="autoplay">Otomatik oynatma</label>
                 </div>
-                <input type="hidden" aria-label="Kanal" placeholder="Kanal" name="channel" value="<? echo $channel; ?>" class="form-control rounded-0">
+                <input type="hidden" aria-label="Kanal" placeholder="Kanal" name="channelSize" value="<? echo $channelSize; ?>" class="form-control rounded-0">
 
                 <h5 class="mt-4">Kanalları değiştir</h5>
                 <span class="form-text">Kanal adresi bölümüne YouTube Kanal IDsi veya kullanıcı adı girmelisiniz.</span>
@@ -466,7 +485,7 @@
                         <input disabled type="text" aria-label="Kanal ID" placeholder="Kanal ID" value="Kanal ID" class="form-control rounded-0">
                     </div>
                     <?php
-                        foreach ($chanels as $key => $value) {
+                        foreach ($channels as $key => $value) {
                             $channelName = $key;
                             $username = $value["username"];
                             $channelId = $value["channelId"];
@@ -538,7 +557,7 @@
         });
     </script>
     <script>
-        var channelList = <?php echo json_encode($chanels); ?>;
+        var channelList = <?php echo json_encode($channels); ?>;
     </script>
 </body>
 </html>
