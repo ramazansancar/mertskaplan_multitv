@@ -217,7 +217,7 @@
                     "Ulusal Kanal" => ["channelId" => "UC6T0L26KS1NHMPbTwI1L4Eg", "username" => "ulusalkanalTV"],
                     "TVNET" => ["channelId" => "UC8rh34IlJTN0lDZlTwzWzjg", "username" => "TVNET"],
                     //"Ülke TV" => ["channelId" => "UCi65FGbYYj-OzJm2luB_fNQ", "username" => "ulketv"], // Kanal taşınmış
-                    "Ülke TV Canlı Yayın" => ["channelId" => "UCT1GDGt-pNYZ4E0kanZHUKQ", "username" => "UlkeTVCanliYayin"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
+                    //"Ülke TV Canlı Yayın" => ["channelId" => "UCT1GDGt-pNYZ4E0kanZHUKQ", "username" => "UlkeTVCanliYayin"], // Artık canlı yayınları dailymotion üzerinden yapıyor
                     "Bengü Türk" => ["channelId" => "UChNgvcVZ_ggDdZ0zCcuuzFw", "username" => "tvbenguturk"],
                     //"Kanal D" => ["channelId" => "UCFoe1tg8MuHjRzmqXtV816A", "username" => "kanald"], // Canlı yayın yok!
                     //"Show TV" => ["channelId" => "UC9JMe_We017gYrRc7kZHgmg", "username" => "showtv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
