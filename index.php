@@ -385,7 +385,7 @@
 </head>
 <body class="text-bg-dark">
     <div class="msk-container">
-        <div class="<? echo $rowClass; ?>">
+        <div class="<?=$rowClass?>">
         <?php foreach ($channels as $chanel => $slug) {
             $channelId = isset($slug['channelId']) ? $slug['channelId'] : null;
             $username = isset($slug['username']) ? $slug['username'] : null;
@@ -446,31 +446,31 @@
         <div class="offcanvas-body">
             <h5>Yayın Tipi</h5>
             <div class="btn-group w-100" role="group" aria-label="Ayarlar">
-                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'haber' || $type == '' || $type == null)  ? ' active' : ''; ?>" href="?<? echo changeType('haber'); ?>">Haber</a>
-                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'siyasi' || $type == 'siyasiler' || $type == 'siyaset' || $type == 'siyasal' || $type == 'politik' || $type == 'politikacı' || $type == 'politikaci' || $type == 'politikacilar' || $type == 'politikacılar')  ? ' active' : ''; ?>" href="?<? echo changeType('politikaci'); ?>">Politikacı</a>
-                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'parti' || $type == 'partiler')  ? ' active' : ''; ?>" href="?<? echo changeType('partiler'); ?>">Partiler</a>
-                <a type="button" class="btn btn-outline-info rounded-0<? echo ($type == 'belediye' || $type == 'belediyeler')  ? ' active' : ''; ?>" href="?<? echo changeType('belediye'); ?>">Belediye</a>
+                <a type="button" class="btn btn-outline-info rounded-0<?=($type == 'haber' || $type == '' || $type == null)  ? ' active' : ''?>" href="?<?=changeType('haber')?>">Haber</a>
+                <a type="button" class="btn btn-outline-info rounded-0<?=($type == 'siyasi' || $type == 'siyasiler' || $type == 'siyaset' || $type == 'siyasal' || $type == 'politik' || $type == 'politikacı' || $type == 'politikaci' || $type == 'politikacilar' || $type == 'politikacılar')  ? ' active' : ''?>" href="?<?=changeType('politikaci')?>">Politikacı</a>
+                <a type="button" class="btn btn-outline-info rounded-0<?=($type == 'parti' || $type == 'partiler')  ? ' active' : ''; ?>" href="?<?=changeType('partiler')?>">Partiler</a>
+                <a type="button" class="btn btn-outline-info rounded-0<?=($type == 'belediye' || $type == 'belediyeler')  ? ' active' : ''; ?>" href="?<?=changeType('belediye')?>">Belediye</a>
             </div>
 
             <h5>Kanal sayısı</h5>
             <div class="btn-group w-100" role="group" aria-label="Ayarlar">
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 4)  ? ' active' : ''; ?>" href="?<? echo changeChannel(4); ?>">4</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 9)  ? ' active' : ''; ?>" href="?<? echo changeChannel(9); ?>">9</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 16) ? ' active' : ''; ?>" href="?<? echo changeChannel(16); ?>">16</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 25) ? ' active' : ''; ?>" href="?<? echo changeChannel(25); ?>">25</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 30) ? ' active' : ''; ?>" href="?<? echo changeChannel(30); ?>">30</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 40) ? ' active' : ''; ?>" href="?<? echo changeChannel(40); ?>">40</a>
-                <a type="button" class="btn btn-outline-light rounded-0<? echo ($channelSize == 500) ? ' active' : ''; ?>" href="?<? echo changeChannel(500); ?>">Tümü</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 4)  ? ' active' : ''?>" href="?<?=changeChannel(4)?>">4</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 9)  ? ' active' : ''?>" href="?<?=changeChannel(9)?>">9</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 16) ? ' active' : ''?>" href="?<?=changeChannel(16)?>">16</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 25) ? ' active' : ''?>" href="?<?=changeChannel(25)?>">25</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 30) ? ' active' : ''?>" href="?<?=changeChannel(30)?>">30</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 40) ? ' active' : ''?>" href="?<?=changeChannel(40)?>">40</a>
+                <a type="button" class="btn btn-outline-light rounded-0<?=($channelSize == 500) ? ' active' : ''?>" href="?<?=changeChannel(500)?>">Tümü</a>
             </div>
 
             <form methot="get" action="">
                 <h5 class="mt-4">Başlangıç ayarı</h5>
                 <div class="form-check form-switch">
-                    <? echo ($autoplay == 1) ? '<input type="hidden" value="off" name="autoplay">' : ''; ?>
-                    <input class="form-check-input" type="checkbox" role="switch" id="autoplay" name="autoplay"<? echo ($autoplay == 1) ? ' checked="checked"' : ''; ?>>
+                <?=($autoplay == 1) ? '<input type="hidden" value="off" name="autoplay">' : ''; ?>
+                    <input class="form-check-input" type="checkbox" role="switch" id="autoplay" name="autoplay"<?=($autoplay == 1) ? ' checked="checked"' : ''?>>
                     <label class="form-check-label" for="autoplay">Otomatik oynatma</label>
                 </div>
-                <input type="hidden" aria-label="Kanal" placeholder="Kanal" name="channelSize" value="<? echo $channelSize; ?>" class="form-control rounded-0">
+                <input type="hidden" aria-label="Kanal" placeholder="Kanal" name="channelSize" value="<?=$channelSize?>" class="form-control rounded-0">
 
                 <h5 class="mt-4">Kanalları değiştir</h5>
                 <span class="form-text">Kanal adresi bölümüne YouTube Kanal IDsi veya kullanıcı adı girmelisiniz.</span>
@@ -491,14 +491,14 @@
                             $channelId = $value["channelId"];
                     ?>
                     <div class="input-group mt-1">
-                        <input type="text" aria-label="Kanal adı" placeholder="Kanal adı" name="cn[]" value="<? echo $channelName; ?>" class="form-control rounded-0">
+                        <input type="text" aria-label="Kanal adı" placeholder="Kanal adı" name="cn[]" value="<?=$channelName?>" class="form-control rounded-0">
                         <span class="input-group-text">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
                             </svg>
                         </span>
-                        <input type="text" aria-label="Kanal Username" placeholder="Kanal Username" name="cu[]" value="<? echo $username; ?>" class="form-control rounded-0">
-                        <input type="text" aria-label="Kanal ID" placeholder="Kanal ID" name="ci[]" value="<? echo $channelId; ?>" class="form-control rounded-0">
+                        <input type="text" aria-label="Kanal Username" placeholder="Kanal Username" name="cu[]" value="<?=$username?>" class="form-control rounded-0">
+                        <input type="text" aria-label="Kanal ID" placeholder="Kanal ID" name="ci[]" value="<?=$channelId?>" class="form-control rounded-0">
                     </div>
                 <?php } ?>
                 </div>
@@ -557,7 +557,7 @@
         });
     </script>
     <script>
-        var channelList = <?php echo json_encode($channels); ?>;
+        var channelList = <?=json_encode($channels)?>;
     </script>
 </body>
 </html>
