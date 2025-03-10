@@ -223,20 +223,35 @@
                     //"Show TV" => ["channelId" => "UC9JMe_We017gYrRc7kZHgmg", "username" => "showtv"], // Diğer uygulamalarda oynatma, video sahibi tarafından devre dışı bırakıldı
                     //"Fox TV" => ["channelId" => "UCJe13zu6MyE6Oueac41KAqg", "username" => "FOXTurkiye"], // Ülke kısıtlaması var (Türkiye için)
                     //"360 TV" => ["channelId" => "UCfqRQZ40fwEdaDWPuR7tvcw", "username" => "tv360"], // YouTube kanalı üzerinden canlı yayın yok!
+                    "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
                     "Ekotürk TV" => ["channelId" => "UCAGVKxpAKwXMWdmcHbrvcwQ", "username" => "EKOTURKTV"],
                     //"beIN Sports Haber" => ["channelId" => "UCPe9vNjHF1kEExT5kHwc7aw", "username" => "beinsportsturkiye"],
-                    "SZC TV" => ["channelId" => "UCOulx_rep5O4i9y6AyDqVvw", "username" => "Sozcutelevizyonu"],
-                    "medyascope" => ["channelId" => "UCNCVuaQDvPrZ4oTKG90iqOA", "username" => "medyascope_"],
+                    "medyascope" => ["channelId" => "UCNCVuaQDvPrZ4oTKG90iqOA", "username" => "medyascope_tv"],
+                    
+                    // Kaynak: https://x.com/onediocom/status/1854908524146364518
+                    // Kaynak 2: https://www.marketingturkiye.com.tr/haberler/youtubeda-reytingi-en-yuksek-gazeteci-kim/
                     "Fatih Altaylı" => ["channelId" => "UCdS7OE5qbJQc7AG4SwlTzKg", "username" => "fatihaltayli"],
-                    "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
+                    "Yılmaz Özdil" => ["channelId" => "UCQmDWRUf_X8BSrrDOSZA-NA", "username" => "yilmaz_ozdil"],
                     "Nevşin Mengü" => ["channelId" => "UCrG27KDq7eW4YoEOYsalU9g", "username" => "nevshinmengu"],
                     "Özlem Gürses" => ["channelId" => "UCojOP7HHZvM2nZz4Rwnd6-Q", "username" => "OzlemGursesTV"],
+                    "Cüneyt Özdemir" => ["channelId" => "UCkwHQ7DWv9aqEtvAOSO74dQ", "username" => "cuneytozdemir"],
+                    "Cansu Canan Özgen" => ["channelId" => "UCpSbJr7VqLhd3kH39MzuTUQ", "username" => "CansuCananÖzgen"],
+                    "Levent Gültekin" => ["channelId" => "UCCi9ZyZfCqCVKieVJptUKlg", "username" => "LeventGültekinOfficial"],
+                    "Enver Aysever" => ["channelId" => "UCxKbAeXN4VjL_NRj_ijhH-Q", "username" => "enveraysevera"],
+                    "Ardan Zentürk" => ["channelId" => "UCkasik07kL9XjS-4iCVVZew", "username" => "ardanzentürk55"],
+                    "Selçuk Geçer" => ["channelId" => "UCqU4fCu2zSL8gamk2CgvjCQ", "username" => "selçukgeçer"],
+                    "Abdurrahman Uzun" => ["channelId" => "UC6VKNvOHFbjj41jiSQ5wfAw", "username" => "AbdurrahmanUzun"],
+                    "Fatih Portakal" => ["channelId" => "UCTRxpG0DLS9eNmeeqTsz_jQ", "username" => "FatihPortakalTV"],
+
+
                     "TV5" => ["channelId" => "UCP-0oW3M7DpjmPDutckOjiA", "username" => "TV5televizyon"],
                     "Bi Haber" => ["channelId" => "UCT1QJrOPtGWYyWkXry8uT4w", "username" => "bihabercanli"],
                     "Artı TV" => ["channelId" => "UCxVicskgBc8OD66iLKc7Uaw", "username" => "ArtTv_Resmi"],
                     "Flash Haber TV" => ["channelId" => "UCNcjCb2RnA3eMMhTZSxZu3A", "username" => "FlashHaberTV"],
                     "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
-                    "Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
+                    //"Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
+                    //"Medya Haber TV" => ["channelId" => "UC7V_iKHenrrXrrhhzOTDWkA", "username" => "medyatvhaber"], // Yine kapanmış :D
+                    "Medya Haber TV" => ["channelId" => "UCxUf5m7XNQCjlbxr-FSPIeA", "username" => "HaberMedya2025"],
                 );
                 break;
 
