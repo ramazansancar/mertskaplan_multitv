@@ -251,7 +251,8 @@
                     "Cadde TV" => ["channelId" => "UCPTF3NxWzcBD8rNnJuGQOSA", "username" => "Caddetvtr"], // Uzun süredir canlı yayın yok!
                     //"Medya Haber TV" => ["channelId" => "UC_KlNwS1QQ9QMPRg9dGNHNw", "username" => "MedyaHaberTV1"],
                     //"Medya Haber TV" => ["channelId" => "UC7V_iKHenrrXrrhhzOTDWkA", "username" => "medyatvhaber"], // Yine kapanmış :D
-                    "Medya Haber TV" => ["channelId" => "UCxUf5m7XNQCjlbxr-FSPIeA", "username" => "HaberMedya2025"],
+                    //"Medya Haber TV" => ["channelId" => "UCxUf5m7XNQCjlbxr-FSPIeA", "username" => "HaberMedya2025"], // Kapanmış
+                    "Medya Haber TV" => ["channelId" => "UC9iNphB47yGrxMgFd2uVHXQ", "username" => "MEDYATVCANLIYAYIN"], //
                 );
                 break;
 
@@ -276,7 +277,7 @@
                     "Şanlıurfa Büyükşehir Belediyesi" => ["channelId" => "UC7iAjvULfSx1t2PfXieXYbQ", "username" => "sanliurfabld"],
                     "Sakarya Büyükşehir Belediyesi" => ["channelId" => "UCdiV5FZ2FYK8g3Sq333yO9Q", "username" => "sakaryabld"],
                     "Eskişehir Büyükşehir Belediyesi" => ["channelId" => "UCtpp2WH-fEc2HHseEKpfZDA", "username" => "eskisehirbb"],
-                    //"Diyarbakır Büyükşehir Belediyesi" => ["channelId" => "UCqE_QftkN3FBIwstYLEHrFg", "username" => "diyarbakirbld"], // Kanalda yayın yok!
+                    "Diyarbakır Büyükşehir Belediyesi" => ["channelId" => "UCqE_QftkN3FBIwstYLEHrFg", "username" => "diyarbakirbld"], // Kanalda yayınlara başlamış
                     "Konya Büyükşehir Belediyesi" => ["channelId" => "UC_4nHId6II3WyrS2dVxOxbA", "username" => "konyabuyuksehirbel"],
                     "Muğla Büyükşehir Belediyesi Canlı Yayın" => ["channelId" => "UC1aQUMwF_DmBOr33n2KGbtA", "username" => "muglabuyuksehirbelediyesi-4150"],
                     "Van Büyükşehir Belediyesi" => ["channelId" => "UCCy_056Xb95il54msxK89_w", "username" => "vanbuyuksehirbelediyesi851"],
